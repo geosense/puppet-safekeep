@@ -1,0 +1,16 @@
+{
+  "name": "geosense-safekeep",
+  "version": "0.1.0",
+  "author": "Jan Škoda, Geosense",
+  "summary": "Module for managing safekeep backups.",
+  "license": "GNU GPL v3",
+  "source": "https://github.com/geosense/puppet-safekeep",
+  "project_page": "https://github.com/geosense/puppet-safekeep",
+  "issues_url": "https://github.com/geosense/puppet-safekeep/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ]
+}
