@@ -4,12 +4,12 @@
 # It sets variables according to platform.
 #
 class safekeep::params {
-  $version = '1.4.2',
-  $pkg_source = undef,
+  $version = '1.4.2'
+  $pkg_source = undef
 
   case $::osfamily {
     'Debian': {
-      $provider = 'apt',
+      $provider = 'apt'
     }
     'Gentoo': {
     }

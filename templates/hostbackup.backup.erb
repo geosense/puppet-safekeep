@@ -1,0 +1,46 @@
+<backup id="<%= @name %>" enabled="true">
+
+  <!-- the client backup host, the user and keys for access -->
+  <host name="<%= @hostname %>" user="root" nice="10"
+        key-ctrl=".ssh/id_rsa"
+        key-data=".ssh/id_rsa" />
+
+  <!-- rate limit bandwidth (kB/s) on a client basis -->
+  <bandwidth overall="50000" download="50000" upload="50000" />
+
+  <!-- (where to store the data) on the server, and for how long -->
+  <repo retention="<%= @keepdays %>D" />
+
+  <!-- settings for database dump and for volume snapshot -->
+  <setup>
+    <%#
+    <!-- databases can be dumped before the backup -->
+    <dump type="postgres" db="my_db" dbuser="foobar" options="--schema=public"
+          file="/var/backup/dumps/mydata" cleanup="true" />
+
+    <!-- what volume is to be snapshot, and the size of the snapshot -->
+    <snapshot device="/path/to/volume" size="500M" />
+
+    <!-- location of a script to be executed at different stages of the run -->
+    <script path="server:/path/to/script" />
+    %>
+  </setup>
+
+  <!-- data to be backup -->
+  <data exclude-fifos="true" exclude-sockets="true">
+    <% @data.each do |entry| -%>
+    <<%= entry[0] %> <%= entry[1] %>="<%= entry[2] %>" /> 
+    <% end -%>
+    <%#
+    Example:
+    <include path="/home"/>
+    <exclude path="/home/guest"/>
+
+    <include glob="**/important/"/>
+    <exclude glob="/home/*/tmp"/>
+
+    <include regexp=".*\.ogg"/>
+    <exclude regexp=".*\.mp3"/>
+    %>
+  </data>
+</backup>
