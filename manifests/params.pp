@@ -4,14 +4,14 @@
 # It sets variables according to platform.
 #
 class safekeep::params {
+  $version = '1.4.2',
+  $pkg_source = undef,
+
   case $::osfamily {
     'Debian': {
-      $package_name = 'safekeep'
-      $service_name = 'safekeep'
+      $provider = 'apt',
     }
-    'RedHat', 'Amazon': {
-      $package_name = 'safekeep'
-      $service_name = 'safekeep'
+    'Gentoo': {
     }
     default: {
       fail("${::operatingsystem} not supported")

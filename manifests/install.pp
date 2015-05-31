@@ -3,8 +3,8 @@
 # This class is called from safekeep for install.
 #
 class safekeep::install {
-
-  package { $::safekeep::package_name:
-    ensure => present,
+  package { 'safekeep-common':
+    ensure   => present,
+    provider => $::safekeep::provider
   }
 }
