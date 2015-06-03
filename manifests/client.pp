@@ -5,8 +5,9 @@ class safekeep::client (
 
   package { 'safekeep-client':
     ensure   => present,
-    provider => $::safekeep::provider
-  }
+    provider => $::safekeep::provider,
+    require  => Class['safekeep'],
+  } ~>
 
   sshkeys::set_authorized_key { "allow safekeep@$allowed_hostname to root@$fqdn":
     local_user => 'root',

@@ -3,6 +3,7 @@ define safekeep::backup_exported (
   $data,
   $keepdays,
   $hostname,
+  $script,
 ){
 
   file { "/etc/safekeep/backup.d/${name}.backup":

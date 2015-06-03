@@ -20,10 +20,11 @@
 
     <!-- what volume is to be snapshot, and the size of the snapshot -->
     <snapshot device="/path/to/volume" size="500M" />
-
-    <!-- location of a script to be executed at different stages of the run -->
-    <script path="server:/path/to/script" />
     %>
+    <% if (@script != 'none') %>
+    <!-- location of a script to be executed at different stages of the run -->
+    <script path="<%= @script %>" />
+    <% end %>
   </setup>
 
   <!-- data to be backup -->
