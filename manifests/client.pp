@@ -3,6 +3,7 @@ class safekeep::client (
 ) {
   include safekeep
 
+  package { 'trickle': }
   package { 'safekeep-client':
     ensure   => present,
     provider => $::safekeep::provider,
