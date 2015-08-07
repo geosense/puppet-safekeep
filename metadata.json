@@ -1,5 +1,5 @@
 {
-  "name": "geosense-safekeep",
+  "name": "leftys-safekeep",
   "version": "0.1.0",
   "author": "Jan Škoda, Geosense",
   "summary": "Module for managing safekeep backups.",
@@ -11,6 +11,10 @@
     {
       "name": "puppetlabs-stdlib",
       "version_requirement": ">= 1.0.0"
+    },
+    {
+      "name": "jtopjian-sshkeys",
+      "version_requirement": ">= 2.1.0"
     }
   ]
 }
