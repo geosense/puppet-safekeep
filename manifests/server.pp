@@ -2,8 +2,15 @@ class safekeep::server (
   $basedir = '/var/lib/safekeep/',
   $user = 'safekeep',
   $emails = 'root,backup',
+  $trickle = undef,
 ) {
-  package { ['safekeep-server', 'trickle']:
+  if ($trickle != undef) {
+    package { 'trickle':
+      ensure   => $trickle,
+      provider => $::safekeep::provider
+    }
+  }
+  package { 'safekeep-server':
     ensure   => present,
     provider => $::safekeep::provider
   } ~>
